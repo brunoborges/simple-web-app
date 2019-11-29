@@ -1,0 +1,23 @@
+# BUILD TIME
+FROM oracle/graalvm-ce:19.3.0-java11 as build
+
+WORKDIR /app
+
+# Copy app
+COPY target/helloworld-1.0-SNAPSHOT.jar .
+
+# Build native binary
+RUN gu install native-image
+RUN native-image --no-server --static -cp helloworld-1.0-SNAPSHOT.jar com.example.App basicwebapp
+
+#
+#
+#
+#
+# RUNTIME
+FROM alpine:latest
+
+EXPOSE 8080
+
+COPY --from=build /app/basicwebapp .
+CMD ["./basicwebapp"]

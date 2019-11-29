@@ -1,0 +1,11 @@
+--compress
+2
+--module-path
+"helloworld-1.0-SNAPSHOT.jar:$JAVA_HOME/jmods"
+--no-header-files
+--no-man-pages
+--add-modules
+"example.web"
+--output
+jruntime
+--verbose

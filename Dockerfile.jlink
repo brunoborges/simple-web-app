@@ -1,0 +1,21 @@
+FROM alpine:latest
+
+WORKDIR /app
+
+# Install JDK 14
+RUN wget -q "https://download.java.net/java/early_access/alpine/15/binaries/openjdk-14-ea+15_linux-x64-musl_bin.tar.gz"
+RUN tar -xzf "openjdk-14-ea+15_linux-x64-musl_bin.tar.gz" -C /opt/
+ENV JAVA_HOME /opt/jdk-14
+
+# Copy app
+COPY helloworld/target/helloworld-1.0-SNAPSHOT.jar .
+COPY jlink.args .
+
+# Build custom JVM runtime
+RUN /opt/jdk-14/bin/jlink @jlink.args
+
+# Delete JDK
+RUN rm -rf /opt/jdk-14 && rm /app/openjdk-14-ea+15_linux-x64-musl_bin.tar.gz
+
+EXPOSE 8080
+CMD ["/app/jruntime/bin/java", "-m", "example.web/com.example.App"]
