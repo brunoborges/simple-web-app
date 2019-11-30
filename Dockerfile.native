@@ -15,7 +15,7 @@ RUN native-image --no-server --static -cp helloworld-1.0-SNAPSHOT.jar com.exampl
 #
 #
 # RUNTIME
-FROM alpine:latest
+FROM scratch
 
 EXPOSE 8080
 
