@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: [macOS-latest]
 
     steps:
@@ -15,3 +14,29 @@ jobs:
         java-version: 13
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Download JDK 14
+      run: wget -q https://download.java.net/java/early_access/jpackage/1/openjdk-14-jpackage+1-70_osx-x64_bin.tar.gz
+    - name: Extract JDK 14
+      uses: brunoborges/justextract@v1
+      with:
+        file: openjdk-14-jpackage+1-70_osx-x64_bin.tar.gz
+    - name: JPackage
+      run: ${GITHUB_WORKSPACE}/jdk-14.jdk/Contents/Home/bin/jpackage --type dmg \
+         --dest target/installer \
+         --name mywebapp \
+         --module-path target/helloworld-1.0-SNAPSHOT.jar \
+         --module example.web/com.example.App
+    - name: Upload DMG
+      uses: actions/upload-artifact@v1
+      with:
+        name: fxgameinstaller
+        path: target/installer/mywebapp-1.0-SNAPSHOT.dmg
+
+
+
+
+
+
+
+
+
