@@ -1,3 +1,5 @@
+--launcher
+mywebapp=example.web/com.example.App
 --compress
 2
 --module-path
