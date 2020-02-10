@@ -7,10 +7,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>helloworld</artifactId>
+  <artifactId>simple-web-app</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>helloworld</name>
+  <name>simple-web-app</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

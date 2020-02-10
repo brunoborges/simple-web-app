@@ -9,5 +9,5 @@ java -version
 jpackage --type dmg \
          --dest target/installer \
          --name mywebapp \
-         --module-path target/helloworld-1.0-SNAPSHOT.jar \
+         --module-path target/simple-web-app-1.0-SNAPSHOT.jar \
          --module example.web/com.example.App

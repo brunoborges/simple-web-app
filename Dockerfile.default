@@ -8,7 +8,7 @@ WORKDIR /build
 COPY .mvn ./.mvn
 COPY . ./
 
-RUN ./mvnw package -pl helloworld
+RUN ./mvnw package -pl simple-web-app 
 
 # RUNTIME IMAGE
 FROM adoptopenjdk/openjdk13:alpine-jre
@@ -16,7 +16,7 @@ FROM adoptopenjdk/openjdk13:alpine-jre
 ARG APP_VERSION=1.0
 
 WORKDIR /app
-COPY --from=build /build/helloworld/target/helloworld-1.0-SNAPSHOT.jar app.jar
+COPY --from=build /build/simple-web-app/target/simple-web-app-1.0-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 CMD ["java", "-jar", "/app/app.jar"]

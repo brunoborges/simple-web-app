@@ -3,7 +3,7 @@ mywebapp=example.web/com.example.App
 --compress
 2
 --module-path
-"helloworld-1.0-SNAPSHOT.jar:$JAVA_HOME/jmods"
+"simple-web-app-1.0-SNAPSHOT.jar:$JAVA_HOME/jmods"
 --no-header-files
 --no-man-pages
 --add-modules
