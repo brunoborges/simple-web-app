@@ -1,2 +1,0 @@
-JAVA_VERSION="14"
-MODULES="java.base jdk.httpserver example.web"
