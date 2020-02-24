@@ -1,5 +1,5 @@
 # BUILD TIME
-FROM oracle/graalvm-ce:19.3.0-java11 as build
+FROM oracle/graalvm-ce:20.0.0-java11
 
 WORKDIR /app
 
@@ -19,5 +19,5 @@ FROM scratch
 
 EXPOSE 8080
 
-COPY --from=build /app/basicwebapp .
+COPY --from=0 /app/basicwebapp .
 CMD ["./basicwebapp"]

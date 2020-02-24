@@ -12,6 +12,7 @@ public class App {
         var port = 8080;
         var server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/").setHandler(e -> {
+            e.getResponseHeaders().add("Content-Type", "text/plain; charset=UTF-8");
             var message = "Hello world!";
             e.sendResponseHeaders(200, message.getBytes().length);
             try (var os = e.getResponseBody()) {
